@@ -1,0 +1,129 @@
+.edit-exercise {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.edit-exercise h1 {
+  margin-bottom: 30px;
+  color: #1e40af;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.testcases-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.testcases-section h2 {
+  margin-bottom: 20px;
+  color: #1e40af;
+}
+
+.testcase-group {
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.testcase-group h3 {
+  margin-bottom: 15px;
+  color: #374151;
+}
+
+.add-testcase,
+.remove-testcase {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.add-testcase {
+  background-color: #1e40af;
+  color: white;
+}
+
+.add-testcase:hover {
+  background-color: #1e3a8a;
+}
+
+.remove-testcase {
+  background-color: #ef4444;
+  color: white;
+}
+
+.remove-testcase:hover {
+  background-color: #dc2626;
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.submit-button,
+.cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.submit-button {
+  background-color: #1e40af;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #1e3a8a;
+}
+
+.cancel-button {
+  background-color: #6b7280;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #4b5563;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+  color: #6b7280;
+} 

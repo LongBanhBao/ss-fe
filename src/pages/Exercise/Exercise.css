@@ -1,0 +1,38 @@
+.exercise-container {
+  padding: 20px;
+  border: 1px solid #000;
+}
+
+.exercise-header {
+  display: flex;
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+.exercise-info {
+  padding: 10px;
+  border-right: 1px solid #000;
+}
+
+.exercise-content {
+  flex: 1;
+  padding: 10px;
+}
+
+.exercise-description {
+  background-color: yellow;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.exercise-io {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exercise-input,
+.exercise-output {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #000;
+}

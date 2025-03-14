@@ -1,0 +1,159 @@
+.coder-container {
+    min-height: 100vh;
+    background-color: #fff;
+  }
+  
+  .coder-header {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .coder-logo {
+    width: 3rem;
+    height: 3rem;
+    background-color: #2b6cb0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+  }
+  
+  .coder-logo-text {
+    color: #fff;
+    font-size: 2rem;
+  }
+  
+  .coder-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e53e3e;
+  }
+  
+  .coder-nav {
+    height: 3rem;
+    background-color: #6b46c1;
+    color: #fff;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .coder-nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .coder-nav-button {
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .coder-nav-button.active {
+    background-color: #fff;
+    color: #6b46c1;
+  }
+  
+  .coder-nav-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .coder-search {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    color: #000;
+  }
+  
+  .coder-logout {
+    background-color: #553c9a;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .coder-avatar {
+    width: 2rem;
+    height: 2rem;
+    background-color: #e2e8f0;
+    border-radius: 50%;
+  }
+  
+  .coder-breadcrumb {
+    height: 2rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+  }
+  
+  .coder-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .coder-editor-container {
+    margin-bottom: 1rem;
+  }
+  
+  .coder-editor {
+    height: 25rem;
+    background-color: #1e1e1e;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .coder-results {
+    background-color: #1f2937;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .coder-results-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .coder-results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .coder-input-section,
+  .coder-output-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .coder-input {
+    height: 9.375rem;
+    padding: 0.75rem;
+    background-color: #fff;
+    color: #000;
+    border-radius: 0.5rem;
+    resize: none;
+    outline: none;
+  }
+  
+  .coder-output {
+    height: 9.375rem;
+    padding: 0.75rem;
+    background-color: #fff;
+    color: #000;
+    border-radius: 0.5rem;
+    overflow: auto;
+  }
+  
+  .coder-output-text {
+    font-family: monospace;
+  }
+
+
+

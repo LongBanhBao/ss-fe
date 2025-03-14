@@ -1,0 +1,316 @@
+.create-exercise-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.exercise-header {
+  display: flex;
+  gap: 20px;
+}
+
+.exercise-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exercise-content {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.exercise-description {
+  display: flex;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.line-numbers {
+  padding: 10px;
+  background-color: #2d2d2d;
+  color: #888;
+  text-align: right;
+  user-select: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  border-right: 1px solid #444;
+  min-width: 40px;
+  box-sizing: border-box;
+}
+
+.description-input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000;
+  outline: none;
+  padding: 10px;
+  resize: none;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  color: black;
+  border-radius: 5px;
+}
+
+.description-output {
+  flex: 1;
+  padding: 10px;
+  padding-left: 50px;
+  border: none;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: auto;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.3s ease;
+}
+
+.description-output:focus {
+  background-color: #3c3c3c;
+}
+
+.exercise-io {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.exercise-input,
+.exercise-output {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.exercise-input textarea,
+.exercise-output textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  resize: none;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  color: black;
+  border-radius: 5px;
+}
+
+.exercise-input::after,
+.exercise-output::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #000;
+}
+
+.testcase-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.testcase-table th {
+  background-color: #1f6a8a; /* Dark blue */
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+.testcase-table td {
+  background-color: #d3d8de; /* Light gray */
+  padding: 10px;
+  text-align: left;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 0;
+}
+
+button {
+  border: 1px solid #000;
+  background-color: white;
+  color: black;
+  padding: 5px 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+button:last-child {
+  margin-right: 0;
+}
+
+.exercise-info label,
+.exercise-input label,
+.exercise-output label,
+.exercise-description label {
+  font-weight: bold;
+}
+
+.testcase-table input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.testcase-container {
+  position: relative;
+  padding-bottom: 50px; /* Để chừa chỗ cho các nút */
+  border: 1px solid #000; /* Thêm viền đen */
+  border-radius: 5px; /* Bo góc cho khung */
+  overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+}
+
+.button-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.create-exercise {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.create-exercise h1 {
+  margin-bottom: 30px;
+  color: #1e40af;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.testcases-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.testcases-section h2 {
+  margin-bottom: 20px;
+  color: #1e40af;
+}
+
+.testcase-group {
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.testcase-group h3 {
+  margin-bottom: 15px;
+  color: #374151;
+}
+
+.add-testcase,
+.remove-testcase {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.add-testcase {
+  background-color: #1e40af;
+  color: white;
+}
+
+.add-testcase:hover {
+  background-color: #1e3a8a;
+}
+
+.remove-testcase {
+  background-color: #ef4444;
+  color: white;
+}
+
+.remove-testcase:hover {
+  background-color: #dc2626;
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.submit-button,
+.cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.submit-button {
+  background-color: #1e40af;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #1e3a8a;
+}
+
+.cancel-button {
+  background-color: #6b7280;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #4b5563;
+}

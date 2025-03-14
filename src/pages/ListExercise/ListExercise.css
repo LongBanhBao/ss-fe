@@ -1,0 +1,129 @@
+.exercise-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.search-box {
+  border: 1px solid #000;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: red;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #f0f0f0;
+}
+
+h2 {
+  color: #1e40af;
+  margin-bottom: 10px;
+}
+
+.exercise-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.exercise-table th,
+.exercise-table td {
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: left;
+  position: relative;
+}
+
+.exercise-table th {
+  background-color: #1e40af;
+  color: white;
+}
+
+.exercise-table tbody tr:nth-child(even) {
+  background-color: #f3f4f6;
+}
+
+.exercise-table th::after,
+.exercise-table td::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  cursor: nwse-resize;
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+  user-select: none;
+}
+
+.create-button {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: blue;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.create-button:hover {
+  background-color: #f0f0f0;
+}
+
+.view-button,
+.edit-button,
+.delete-button {
+  padding: 6px 12px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-right: 8px;
+}
+
+.view-button {
+  background-color: #1e40af;
+}
+
+.view-button:hover {
+  background-color: #1e3a8a;
+}
+
+.edit-button {
+  background-color: #059669;
+}
+
+.edit-button:hover {
+  background-color: #047857;
+}
+
+.delete-button {
+  background-color: #dc2626;
+}
+
+.delete-button:hover {
+  background-color: #b91c1c;
+}
