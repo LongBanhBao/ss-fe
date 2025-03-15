@@ -2,8 +2,8 @@ import React, {
   ChangeEvent,
   useCallback,
   useEffect,
-  useState,
   useRef,
+  useState,
 } from "react";
 import CodeEditor from "../../components/CodeEditor"; // Fix import path
 import "./TKNP.css"; // Import the new CSS file
@@ -174,65 +174,35 @@ const TKNP: React.FC = () => {
   };
 
   const pythonCode = `
-import json
-def binary_search_with_steps(arr, target):
-    steps = []
+def binary_search(arr, target):
     left = 0
     right = len(arr) - 1
-    
-    while left <= right:
-        mid = (left + right) // 2
-        
-        # Ghi lại bước tìm kiếm hiện tại
-        steps.append({
-            "left": left,
-            "right": right,
-            "mid": mid,
-            "value": arr[mid],
-            "isMatch": arr[mid] == target,
-            "description": f"So sánh A[{mid}] = {arr[mid]} với {target}"
-        })
-        
-        if arr[mid] == target:
-            return steps
-        elif arr[mid] < target:
-            left = mid + 1
-            steps.append({
-                "left": left,
-                "right": right,
-                "mid": mid,
-                "value": arr[mid],
-                "isMatch": False,
-                "description": f"A[{mid}] < {target}, tìm bên phải: left = {left}"
-            })
-        else:
-            right = mid - 1
-            steps.append({
-                "left": left,
-                "right": right,
-                "mid": mid,
-                "value": arr[mid],
-                "isMatch": False,
-                "description": f"A[{mid}] > {target}, tìm bên trái: right = {right}"
-            })
-    
-    # Không tìm thấy
-    steps.append({
-        "left": left,
-        "right": right,
-        "mid": -1,
-        "value": None,
-        "isMatch": False,
-        "description": "Không tìm thấy giá trị trong mảng"
-    })
-    return steps
 
-# Test với mảng đã sắp xếp
-arr = ${JSON.stringify(array)}
-target = ${k}
-steps = binary_search_with_steps(arr, target)
-print(json.dumps(steps))
-`;
+    while left <= right:
+        # Tìm phần tử ở giữa
+        mid = (left + right) // 2
+
+        # Nếu tìm thấy phần tử, trả về vị trí
+        if arr[mid] == target:
+            return mid
+
+        # Nếu phần tử ở giữa lớn hơn target
+        # tìm kiếm nửa bên trái
+        elif arr[mid] > target:
+            right = mid - 1
+
+        # Ngược lại tìm kiếm nửa bên phải
+        else:
+            left = mid + 1
+
+    # Trả về -1 nếu không tìm thấy
+    return -1
+
+  # Ví dụ sử dụng
+if __name__ == "__main__":
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    print(binary_search(arr, 7))  # Output: 6
+    print(binary_search(arr, 11)) # Output: -1`.trim();
 
   const handleStepClick = (stepIndex: number) => {
     setCurrentStep(stepIndex);
@@ -281,20 +251,20 @@ print(json.dumps(steps))
   };
 
   return (
-    <div className="bg-white p-4">
+    <div className="p-4 bg-white">
       {/* Breadcrumb */}
-      <div className="text-sm mb-4">
+      <div className="mb-4 text-sm">
         Bài học &gt; Thuật toán tìm kiếm &gt; thuật toán tìm kiếm nhị phân
       </div>
 
       {/* Main content với resizer */}
-      <div className="flex space-x-4 relative" ref={containerRef}>
+      <div className="relative flex space-x-4" ref={containerRef}>
         {/* Steps section */}
         <div
-          className="bg-gray-100 p-4 rounded h-500"
+          className="p-4 bg-gray-100 rounded h-500"
           style={{ width: `${leftWidth}%` }}
         >
-          <h2 className="text-2xl font-bold mb-4">Các bước thực hiện</h2>
+          <h2 className="mb-4 text-2xl font-bold">Các bước thực hiện</h2>
           <div
             className="mt-4 h-[400px] overflow-y-auto scroll-smooth"
             ref={stepsContainerRef}
@@ -327,7 +297,7 @@ print(json.dumps(steps))
 
         {/* Visualization section */}
         <div className="bg-white" style={{ width: `${100 - leftWidth}%` }}>
-          <div className="step-container overflow-hidden">
+          <div className="overflow-hidden step-container">
             {/* Input for array */}
             <div className="mt-4">
               <input
@@ -335,18 +305,18 @@ print(json.dumps(steps))
                 value={arrayInput}
                 onChange={handleArrayInputChange}
                 placeholder="Nhập dãy số (cách nhau bởi dấu phẩy)"
-                className="border rounded px-2 py-1 w-full mb-4"
+                className="w-full px-2 py-1 mb-4 border rounded"
               />
               <button
                 onClick={validateAndSetArray}
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="px-4 py-2 text-white bg-blue-500 rounded"
               >
                 Xác nhận dãy số
               </button>
             </div>
 
-            <div className="flex mb-4 items-center">
-              <p className="mr-4 text-lg font-bold flex-shrink-0">A=</p>
+            <div className="flex items-center mb-4">
+              <p className="flex-shrink-0 mr-4 text-lg font-bold">A=</p>
               <div className="flex flex-wrap">
                 {array.map((num, index) => (
                   <div
@@ -366,8 +336,8 @@ print(json.dumps(steps))
                 ))}
               </div>
             </div>
-            <div className="flex mb-4 items-center">
-              <p className="mr-4 text-lg font-bold flex-shrink-0">i =</p>
+            <div className="flex items-center mb-4">
+              <p className="flex-shrink-0 mr-4 text-lg font-bold">i =</p>
               <div className="flex flex-wrap">
                 {array.map((_, index) => (
                   <div
@@ -388,8 +358,8 @@ print(json.dumps(steps))
               </div>
             </div>
             {currentStepData.comparing && (
-              <div className="flex mb-4 items-center">
-                <p className="mr-4 text-2xl font-bold flex-shrink-0">
+              <div className="flex items-center mb-4">
+                <p className="flex-shrink-0 mr-4 text-2xl font-bold">
                   So sánh:
                 </p>
                 <p className="mr-2">A[{currentStepData.mid}] = </p>
@@ -414,8 +384,8 @@ print(json.dumps(steps))
               </div>
             )}
 
-            <div className="bg-white border border-gray-300 p-4 rounded">
-              <p className="font-bold mb-2">{currentStepData.description}</p>
+            <div className="p-4 bg-white border border-gray-300 rounded">
+              <p className="mb-2 font-bold">{currentStepData.description}</p>
               {currentStepData.comparing && (
                 <div className="whitespace-pre-line">
                   {`So sánh A[${currentStepData.mid}] với K\n` +
@@ -433,17 +403,17 @@ print(json.dumps(steps))
             </div>
           </div>
 
-          <div className="mt-4 flex justify-between items-center">
+          <div className="flex items-center justify-between mt-4">
             <input
               type="number"
               value={k}
               onChange={(e) => setK(parseInt(e.target.value) || 0)}
-              className="border rounded px-2 py-1 w-20"
+              className="w-20 px-2 py-1 border rounded"
             />
             <div className="space-x-2">
               <button
                 onClick={handlePrev}
-                className="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
+                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
                 disabled={currentStep === 0}
               >
                 Trước
@@ -451,21 +421,21 @@ print(json.dumps(steps))
               {isRunning ? (
                 <button
                   onClick={handleStop}
-                  className="bg-red-500 text-white px-4 py-2 rounded"
+                  className="px-4 py-2 text-white bg-red-500 rounded"
                 >
                   Dừng
                 </button>
               ) : (
                 <button
                   onClick={handleStart}
-                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  className="px-4 py-2 text-white bg-green-500 rounded"
                 >
                   Bắt đầu
                 </button>
               )}
               <button
                 onClick={handleNext}
-                className="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50"
+                className="px-4 py-2 text-white bg-blue-500 rounded disabled:opacity-50"
                 disabled={currentStep === searchSteps.length - 1}
               >
                 Tiếp
@@ -477,7 +447,7 @@ print(json.dumps(steps))
 
       {/* Code Editor Section */}
       <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Thử nghiệm code</h2>
+        <h2 className="mb-4 text-2xl font-bold">Thử nghiệm code</h2>
         <CodeEditor defaultCode={pythonCode} />
       </div>
     </div>

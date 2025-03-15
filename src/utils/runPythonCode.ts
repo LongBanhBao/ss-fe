@@ -26,6 +26,7 @@ export const getRuntime = async () => {
 let version: string = "3.10";
 (async () => {
   version = await getRuntime();
+  console.log("Version", version);
 })();
 
 const limiter = new Bottleneck({

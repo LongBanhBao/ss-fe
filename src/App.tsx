@@ -1,24 +1,24 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import MainLayout from "./layouts/MainLayout";
-import Home from "./pages/Home/Home";
-import TKTT from "./pages/TKTT/TKTT";
-import TKNP from "./pages/TKNP/TKNP";
-import SXChon from "./pages/SXChon/SXChon";
-import SXChenK from "./pages/SXChenK/SXChenK";
-import SXNoiBot from "./pages/SXNoiBot/SXNoiBot";
 import Coder from "./pages/Coder/Coder";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
-import ProfileUser from "./pages/Profile/ProfileStudent";
-import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
-import ListExercise from "./pages/ListExercise/ListExercise";
-import Exercise from "./pages/Exercise/Exercise";
 import CreateExercise from "./pages/CreateExercise/CreateExercise";
 import EditExercise from "./pages/EditExercise/EditExercise";
+import Exercise from "./pages/Exercise/Exercise";
 import ExerciseDetail from "./pages/ExerciseDetail/ExerciseDetail";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import Home from "./pages/Home/Home";
+import ListExercise from "./pages/ListExercise/ListExercise";
+import Login from "./pages/Login/Login";
+import ProfileUser from "./pages/Profile/ProfileStudent";
+import Register from "./pages/Register/Register";
+import SXChenK from "./pages/SXChenK/SXChenK";
+import SXChon from "./pages/SXChon/SXChon";
+import SXNoiBot from "./pages/SXNoiBot/SXNoiBot";
+import TKNP from "./pages/TKNP/TKNP";
+import TKTT from "./pages/TKTT/TKTT";
+import UpdateProfile from "./pages/UpdateProfile/UpdateProfile";
 
 const App: React.FC = () => {
   return (
