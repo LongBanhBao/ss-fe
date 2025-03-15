@@ -2,8 +2,8 @@ import React, {
   ChangeEvent,
   useCallback,
   useEffect,
-  useState,
   useRef,
+  useState,
 } from "react";
 import CodeEditor from "../../components/CodeEditor";
 import "./SXChenK.css"; // Import the new CSS file
@@ -247,20 +247,20 @@ const InsertionSort: React.FC = () => {
   };
 
   return (
-    <div className="bg-white p-4">
+    <div className="p-4 bg-white">
       {/* Breadcrumb - Cp nhật class */}
       <div className="breadcrumb">
         Bài học &gt; Thuật toán sắp xếp &gt; thuật toán sắp xếp chèn
       </div>
 
       {/* Main content - Điều chỉnh tỷ lệ */}
-      <div className="flex space-x-4 relative" ref={containerRef}>
+      <div className="relative flex space-x-4" ref={containerRef}>
         {/* Steps section */}
         <div
-          className="bg-gray-100 p-4 rounded h-500px"
+          className="p-4 bg-gray-100 rounded h-500px"
           style={{ width: `${leftWidth}%` }}
         >
-          <h2 className="font-bold mb-4">Các bước thực hiện</h2>
+          <h2 className="mb-4 font-bold">Các bước thực hiện</h2>
           <div
             className="mt-4 h-[400px] overflow-y-auto scroll-smooth"
             ref={stepsContainerRef}
@@ -302,11 +302,11 @@ const InsertionSort: React.FC = () => {
               type="text"
               value={arrayInput}
               onChange={handleArrayInputChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
 
             {/* Thêm các nút chọn kiểu sắp xếp */}
-            <div className="mt-2 flex space-x-4">
+            <div className="flex mt-2 space-x-4">
               <button
                 onClick={() => handleSortTypeChange(true)}
                 className={`px-4 py-2 rounded ${
@@ -331,8 +331,8 @@ const InsertionSort: React.FC = () => {
           </div>
 
           {/* Display D */}
-          <div className="flex mb-4 items-center relative h-20">
-            <p className="mr-4 text-2xl font-bold flex-shrink-0">D=</p>
+          <div className="relative flex items-center h-20 mb-4">
+            <p className="flex-shrink-0 mr-4 text-2xl font-bold">D=</p>
             <div
               className={`w-12 h-12 rounded-full flex items-center justify-center mr-2 absolute transition-all duration-500
               ${
@@ -352,8 +352,8 @@ const InsertionSort: React.FC = () => {
           </div>
 
           {/* Display A */}
-          <div className="flex mb-4 items-center relative h-20">
-            <p className="mr-4 text-2xl font-bold flex-shrink-0">A=</p>
+          <div className="relative flex items-center h-20 mb-4">
+            <p className="flex-shrink-0 mr-4 text-2xl font-bold">A=</p>
             {currentStepData.array.map((num, index) => (
               <div
                 key={index}
@@ -389,12 +389,12 @@ const InsertionSort: React.FC = () => {
             ))}
           </div>
 
-          <div className="flex mb-4 items-center">
-            <p className="mr-4 text-2xl font-bold flex flex-shrink-0">i =</p>
+          <div className="flex items-center mb-4">
+            <p className="flex flex-shrink-0 mr-4 text-2xl font-bold">i =</p>
             {currentStepData.array.map((_, index) => (
               <div
                 key={index}
-                className={`w-12 h-12 flex items-center justify-center mr-2 
+                className={`w-12 h-12 flex items-center justify-center mr-2
                 ${
                   index === currentStepData.i
                     ? "bg-yellow-300"
@@ -412,8 +412,8 @@ const InsertionSort: React.FC = () => {
           {currentStepData.j >= 0 &&
             currentStepData.value !== null &&
             !currentStepData.animatingIndices && (
-              <div className="flex items-center my-4 bg-gray-50 p-4 rounded-lg shadow-sm">
-                <p className="text-xl font-bold mr-6">So sánh:</p>
+              <div className="flex items-center p-4 my-4 rounded-lg shadow-sm bg-gray-50">
+                <p className="mr-6 text-xl font-bold">So sánh:</p>
                 <div className="flex items-center">
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold bg-red-300 shadow-md`}
@@ -435,14 +435,14 @@ const InsertionSort: React.FC = () => {
               </div>
             )}
 
-          <div className="bg-white border border-gray-300 p-4 rounded">
-            <p className="font-bold mb-2">{currentStepData.description}</p>
+          <div className="p-4 bg-white border border-gray-300 rounded">
+            <p className="mb-2 font-bold">{currentStepData.description}</p>
           </div>
-          <div className="mt-4 flex justify-between items-center">
+          <div className="flex items-center justify-between mt-4">
             <div className="space-x-2">
               <button
                 onClick={handlePrev}
-                className="bg-gray-200 px-4 py-2 rounded"
+                className="px-4 py-2 bg-gray-200 rounded"
                 disabled={currentStep === 0}
               >
                 Trước
@@ -450,21 +450,21 @@ const InsertionSort: React.FC = () => {
               {isRunning ? (
                 <button
                   onClick={handleStop}
-                  className="bg-red-500 text-white px-4 py-2 rounded"
+                  className="px-4 py-2 text-white bg-red-500 rounded"
                 >
                   Dừng
                 </button>
               ) : (
                 <button
                   onClick={handleStart}
-                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  className="px-4 py-2 text-white bg-green-500 rounded"
                 >
                   Bắt đầu
                 </button>
               )}
               <button
                 onClick={handleNext}
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="px-4 py-2 text-white bg-blue-500 rounded"
                 disabled={currentStep === sortSteps.length - 1}
               >
                 Tiếp
@@ -477,7 +477,7 @@ const InsertionSort: React.FC = () => {
       {/* Code Editor Section - Cập nhật theo style mới */}
       <div className="flex flex-col">
         <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4">Thử nghiệm code</h2>
+          <h2 className="mb-4 text-2xl font-bold">Thử nghiệm code</h2>
           <CodeEditor
             defaultCode={`def insertion_sort(arr):
     for i in range(1, len(arr)):
@@ -487,7 +487,13 @@ const InsertionSort: React.FC = () => {
             arr[j + 1] = arr[j]
             j -= 1
         arr[j + 1] = key
-    return arr`}
+    return arr
+
+arr = list(map(int, input().split(" ")))
+
+for i in insertion_sort(arr):
+        print(i, end=" ")`}
+            defaultInput="10 9 8 7 6 5 4 3 2 1"
           />
         </div>
       </div>

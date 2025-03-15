@@ -1,16 +1,28 @@
+import { forgotPassword } from "@/services/auth";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ForgotPassword.css"; // Import the CSS file
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage("");
+    setLoading(true);
     try {
-      //Haha
+      await forgotPassword(email);
+      setMessage("Gửi email thành công");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (error) {
-      setMessage("Gửi email thất bại");
+      if (error instanceof Error) setMessage(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -28,10 +40,10 @@ const ForgotPassword = () => {
             required
           />
           <button type="submit" className="button">
-            Gửi email khôi phục
+            {loading ? "Loading..." : "Gửi email"}
           </button>
         </form>
-        {message && <p className="message">{message}</p>}
+        {message && <p className={`text-red-500`}>{message}</p>}
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import React, {
   ChangeEvent,
   useCallback,
   useEffect,
-  useState,
   useRef,
+  useState,
 } from "react";
 import CodeEditor from "../../components/CodeEditor";
 import "./SXNoiBot.css"; // Import the new CSS file
@@ -173,51 +173,29 @@ const BubbleSort: React.FC = () => {
   };
 
   const pythonCode = `
-  def bubble_sort_with_steps(arr):
-      steps = []
-      n = len(arr)
-      array_copy = arr.copy()  # Tạo bản sao để không thay đổi mảng gốc
-      
-      for i in range(n):
-          for j in range(0, n-i-1):
-              # Ghi lại bước so sánh
-              steps.append({
-                  "array": array_copy.copy(),
-                  "i": i,
-                  "j": j,
-                  "comparing": True,
-                  "description": f"So sánh A[{j}] = {array_copy[j]} với A[{j+1}] = {array_copy[j+1]}"
-              })
-              
-              if array_copy[j] > array_copy[j+1]:
-                  # Thực hiện hoán đổi
-                  array_copy[j], array_copy[j+1] = array_copy[j+1], array_copy[j]
-                  
-                  # Ghi lại bước hoán đổi
-                  steps.append({
-                      "array": array_copy.copy(),
-                      "i": i,
-                      "j": j,
-                      "comparing": False,
-                      "description": f"Hoán đổi A[{j}] = {array_copy[j]} với A[{j+1}] = {array_copy[j+1]}"
-                  })
-      
-      # Ghi lại bước cuối cùng
-      steps.append({
-          "array": array_copy.copy(),
-          "i": -1,
-          "j": -1,
-          "comparing": False,
-          "description": "Sắp xếp hoàn tất"
-      })
-      
-      return steps
+def bubble_sort(arr):
+    n = len(arr)
 
-  # Test với mảng
-  arr = ${JSON.stringify(array)}
-  steps = bubble_sort_with_steps(arr)
-  print(json.dumps(steps))
-  `;
+    for i in range(n - 1):
+        swapped = False
+
+        for j in range(n - 1 - i):
+            if arr[j] > arr[j + 1]:  # Nếu phần tử trước lớn hơn phần tử sau, hoán đổi
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+
+        # Nếu không có hoán đổi nào, danh sách đã được sắp xếp
+        if not swapped:
+            break
+
+    return arr
+
+# 📝 Kiểm tra thuật toán
+arr = list(map(int, input().split(" ")))
+
+for i in bubble_sort(arr):
+    print(i, end=" ")
+`;
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -242,20 +220,20 @@ const BubbleSort: React.FC = () => {
   };
 
   return (
-    <div className="bg-white p-4">
+    <div className="p-4 bg-white">
       {/* Breadcrumb */}
-      <div className="text-sm mb-4">
+      <div className="mb-4 text-sm">
         Bài học &gt; Thuật toán sắp xếp &gt; thuật toán sắp xếp nổi bọt
       </div>
 
       {/* Main content */}
-      <div className="flex space-x-4 relative" ref={containerRef}>
+      <div className="relative flex space-x-4" ref={containerRef}>
         {/* Steps section */}
         <div
-          className="bg-gray-100 p-4 rounded h-500px"
+          className="p-4 bg-gray-100 rounded h-500px"
           style={{ width: `${leftWidth}%` }}
         >
-          <h2 className="text-xl font-bold mb-4">Các bước thực hiện</h2>
+          <h2 className="mb-4 text-xl font-bold">Các bước thực hiện</h2>
           <div
             className="mt-4 h-[400px] overflow-y-auto scroll-smooth"
             ref={stepsContainerRef}
@@ -296,10 +274,10 @@ const BubbleSort: React.FC = () => {
               type="text"
               value={arrayInput}
               onChange={handleArrayInputChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
 
-            <div className="mt-2 flex space-x-4">
+            <div className="flex mt-2 space-x-4">
               <button
                 onClick={() => handleSortTypeChange(true)}
                 className={`px-4 py-2 rounded ${
@@ -375,7 +353,7 @@ const BubbleSort: React.FC = () => {
                 {currentStepData.array.map((_, index) => (
                   <div
                     key={index}
-                    className="w-12 h-12 flex items-center justify-center mr-2 mb-2 bg-purple-400"
+                    className="flex items-center justify-center w-12 h-12 mb-2 mr-2 bg-purple-400"
                   >
                     {index}
                   </div>
@@ -384,8 +362,8 @@ const BubbleSort: React.FC = () => {
             </div>
           </div>
           {currentStepData.comparing && (
-            <div className="flex mb-4 items-center">
-              <p className="mr-4 text-2xl font-bold flex-shrink-0">So sánh:</p>
+            <div className="flex items-center mb-4">
+              <p className="flex-shrink-0 mr-4 text-2xl font-bold">So sánh:</p>
               <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center mr-2 bg-green-300`}
               >
@@ -404,14 +382,14 @@ const BubbleSort: React.FC = () => {
               </div>
             </div>
           )}
-          <div className="bg-white border border-gray-300 p-4 rounded">
-            <p className="font-bold mb-2">{currentStepData.description}</p>
+          <div className="p-4 bg-white border border-gray-300 rounded">
+            <p className="mb-2 font-bold">{currentStepData.description}</p>
           </div>
-          <div className="mt-4 flex justify-between items-center">
+          <div className="flex items-center justify-between mt-4">
             <div className="space-x-2">
               <button
                 onClick={handlePrev}
-                className="bg-gray-200 px-4 py-2 rounded"
+                className="px-4 py-2 bg-gray-200 rounded"
                 disabled={currentStep === 0}
               >
                 Trước
@@ -419,21 +397,21 @@ const BubbleSort: React.FC = () => {
               {isRunning ? (
                 <button
                   onClick={handleStop}
-                  className="bg-red-500 text-white px-4 py-2 rounded"
+                  className="px-4 py-2 text-white bg-red-500 rounded"
                 >
                   Dừng
                 </button>
               ) : (
                 <button
                   onClick={handleStart}
-                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  className="px-4 py-2 text-white bg-green-500 rounded"
                 >
                   Bắt đầu
                 </button>
               )}
               <button
                 onClick={handleNext}
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="px-4 py-2 text-white bg-blue-500 rounded"
                 disabled={currentStep === sortSteps.length - 1}
               >
                 Tiếp
@@ -445,8 +423,8 @@ const BubbleSort: React.FC = () => {
 
       <div className="flex flex-col">
         <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4">Thử nghiệm code</h2>
-          <CodeEditor defaultCode={pythonCode} />
+          <h2 className="mb-4 text-2xl font-bold">Thử nghiệm code</h2>
+          <CodeEditor defaultCode={pythonCode} defaultInput="10 2 3 4 5 64 1" />
         </div>
       </div>
     </div>

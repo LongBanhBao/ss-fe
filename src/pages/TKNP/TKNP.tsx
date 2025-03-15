@@ -114,7 +114,6 @@ const TKNP: React.FC = () => {
   const handleStart = () => {
     setIsRunning(true);
     setCurrentStep(0);
-    setIsRunning(false);
   };
 
   const handleStop = () => {
@@ -175,34 +174,35 @@ const TKNP: React.FC = () => {
 
   const pythonCode = `
 def binary_search(arr, target):
-    left = 0
-    right = len(arr) - 1
-
+    left, right = 0, len(arr) - 1
     while left <= right:
-        # Tìm phần tử ở giữa
         mid = (left + right) // 2
-
-        # Nếu tìm thấy phần tử, trả về vị trí
         if arr[mid] == target:
             return mid
-
-        # Nếu phần tử ở giữa lớn hơn target
-        # tìm kiếm nửa bên trái
-        elif arr[mid] > target:
-            right = mid - 1
-
-        # Ngược lại tìm kiếm nửa bên phải
-        else:
+        elif arr[mid] < target:
             left = mid + 1
-
-    # Trả về -1 nếu không tìm thấy
+        else:
+            right = mid - 1
     return -1
 
-  # Ví dụ sử dụng
-if __name__ == "__main__":
-    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    print(binary_search(arr, 7))  # Output: 6
-    print(binary_search(arr, 11)) # Output: -1`.trim();
+# Nhập mảng từ bàn phím
+arr = list(map(int, input("Nhập các phần tử của mảng, cách nhau bởi dấu cách: ").split(" ")))
+arr.sort()  # Tìm kiếm nhị phân yêu cầu mảng phải được sắp xếp
+
+# Xuất mảng đã sắp xếp
+print("Mảng sau khi sắp xếp:", arr)
+
+# Nhập giá trị cần tìm
+target = int(input("Nhập số cần tìm: "))
+
+# Gọi hàm tìm kiếm nhị phân
+result = binary_search(arr, target)
+
+# Hiển thị kết quả
+if result != -1:
+    print(f"Phần tử {target} được tìm thấy tại vị trí {result} (chỉ mục bắt đầu từ 0)")
+else:
+    print("Phần tử không có trong mảng.")`.trim();
 
   const handleStepClick = (stepIndex: number) => {
     setCurrentStep(stepIndex);
@@ -448,7 +448,12 @@ if __name__ == "__main__":
       {/* Code Editor Section */}
       <div className="mt-8">
         <h2 className="mb-4 text-2xl font-bold">Thử nghiệm code</h2>
-        <CodeEditor defaultCode={pythonCode} />
+        <CodeEditor
+          defaultCode={pythonCode}
+          defaultInput={`
+5 4 7 8 9 0 1 2 3 6
+8`}
+        />
       </div>
     </div>
   );

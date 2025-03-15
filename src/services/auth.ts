@@ -1,12 +1,13 @@
-import instance from "./axios";
+import { User } from "@/types/database";
 import {
-  UserRegister,
+  LoginResponse,
   UserLogin,
   UserProfile,
+  UserRegister,
   UserUpdate,
-  LoginResponse,
 } from "@/types/user";
-import { User } from "@/types/database";
+import { AxiosError } from "axios";
+import instance from "./axios";
 export const register = async (user: UserRegister) => {
   try {
     const response = await instance.post("/register", user);
@@ -30,12 +31,10 @@ export const login = async (user: UserLogin): Promise<LoginResponse> => {
     return response.data;
   } catch (error: unknown) {
     console.error("Login error:", error);
-    if (error instanceof Error && (error as any).response?.status === 401) {
+    if (error instanceof AxiosError && error.response?.status === 401) {
       throw new Error("Email hoặc mật khẩu không đúng");
     }
-    throw new Error(
-      "Đã có lỗi xảy ra."
-    );
+    throw new Error("Đã có lỗi xảy ra.");
   }
 };
 
@@ -73,5 +72,19 @@ export const updateProfile = async (data: UserUpdate): Promise<User> => {
   } catch (error) {
     console.error("Update profile error:", error);
     throw new Error("Failed to update profile.");
+  }
+};
+
+export const forgotPassword = async (email: string) => {
+  try {
+    const response = await instance.post("/forgot", { email });
+    console.log("Forgot password: ", response.data);
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError && error.response?.status === 404) {
+      throw new Error("Email không tồn tại.");
+    }
+    console.error("Forgot password error:", error);
+    throw new Error("Failed to send email.");
   }
 };
