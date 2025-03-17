@@ -50,7 +50,10 @@ const CreateExercise: React.FC = () => {
   const addTestcase = () => {
     setForm((prev) => ({
       ...prev,
-      test_cases: [...prev.test_cases, { input: "", output: "", type: "" }],
+      test_cases: [
+        ...prev.test_cases,
+        { input: "", output: "", type: "sample" },
+      ],
     }));
   };
 

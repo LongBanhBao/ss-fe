@@ -37,7 +37,7 @@ const Register = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (form.role === "teacher" && form.email.includes("@lecturer")) {
+    if (form.role === "teacher" && !form.email.includes("@lecturer")) {
       setError("Email không hợp lệ.");
       return;
     }

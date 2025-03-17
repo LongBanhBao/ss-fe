@@ -182,7 +182,7 @@ const Exercise: React.FC = () => {
     setResult(null);
     setRunning(true);
     setRunCode((pre) => ({
-      input: pre.input === "" ? sampleTestCases[0].input || "" : pre.input,
+      input: code === "" ? sampleTestCases[0].input || "" : pre.input,
       output: "",
     }));
     setMessage("Đang chạy thử...");
@@ -195,8 +195,15 @@ const Exercise: React.FC = () => {
     }
     try {
       preRunCode();
-      const result = await runPythonCode(code, sampleTestCases[0].input || "");
-      setRunCode((pre) => ({ ...pre, output: result?.output || "" }));
+      const result = await runPythonCode(
+        code,
+        runCode.input ? runCode.input : sampleTestCases[0].input || ""
+      );
+      setRunCode((pre) => ({
+        ...pre,
+        output: result?.output || "",
+        input: runCode.input ? runCode.input : sampleTestCases[0].input || "",
+      }));
       if (result && id && result.code === 0) {
         if (mode === SAMPLE && auth.isTeacher) {
           setMessage("Code chạy thành công");
@@ -278,6 +285,7 @@ const Exercise: React.FC = () => {
             {auth.isTeacher && isOwner && <option value="sample">Mẫu</option>}
             {auth.isStudent && <option value="saved">Code đã lưu</option>}
             {auth.isStudent && <option value="submission">Nộp bài</option>}
+            {auth.isTeacher && <option value="submission">Nộp bài</option>}
             {auth.isTeacher && !isOwner && (
               <option value="submission">Không có quyền</option>
             )}
